@@ -10,8 +10,6 @@ package com.zgr.mongodb.tenant;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.catalina.util.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +18,6 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;

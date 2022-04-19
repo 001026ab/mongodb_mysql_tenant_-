@@ -6,3 +6,11 @@ mongo:
   port: 27017
   username: admin
   password: UFIRoot@Root123.comUFI
+
+    #druid:
+    #driver-class-name: com.mysql.jdbc.Driver
+    # ????????????
+    ##url: jdbc:mysql://192.168.126.133:3306/docker?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    #username: root
+    #password: 123456
+    #type: com.alibaba.druid.pool.DruidDataSource

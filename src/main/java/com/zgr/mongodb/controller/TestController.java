@@ -18,7 +18,7 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @PostMapping("test")
+    @PostMapping("test222")
     @SwitchMongoDB(value = DataSources.ZHW)
     public  void test2() {
         testService.save();
