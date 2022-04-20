@@ -38,7 +38,9 @@ public class DynamicDataSourceConfiguration {
     @Bean("dynamicDataSource")
     @Primary
     public DataSource dynamicDataSource() {
+        //注意该类，是自己编写的类
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
+       // DataSourceContextHolder dynamicDataSource = new DataSourceContextHolder();
         //配置默认数据源
         //dynamicDataSource.setDefaultTargetDataSource(primaryDataSource());
          //第一个数据库
@@ -54,7 +56,8 @@ public class DynamicDataSourceConfiguration {
         //druidDataSource.setDbType("com.alibaba.druid.pool.DruidDataSource");
         druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         CLIENT_DB_FACTORY_MAP.put("docker", druidDataSource);
-
+        //配置默认数据源
+        dynamicDataSource.setDefaultTargetDataSource(druidDataSource);
         //第二个数据库
         DruidDataSource druidDataSource2 = new DruidDataSource();
 

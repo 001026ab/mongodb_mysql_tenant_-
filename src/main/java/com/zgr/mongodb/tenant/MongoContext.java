@@ -29,6 +29,9 @@ import java.util.Map;
  * @Description mongo 上下文
  * 多租户
  * mongodb://admin:UFIRoot%40Root123%2EcomUFI@192.168.126.133:27017/ZHW?authSource=admin
+ * mongodb://admin:UFIRoot@Root123.comUFI@192.168.126.133:27017/ZHW?authSource=admin
+ *
+ * 还需要写一个拦截器，切换租户
  */
 @Component
 public class MongoContext {

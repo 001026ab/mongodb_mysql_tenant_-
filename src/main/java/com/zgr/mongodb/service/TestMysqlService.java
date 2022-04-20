@@ -13,4 +13,5 @@ import java.util.List;
 
 public interface TestMysqlService {
     List<UserMysql> queryList();
+    void save();
 }

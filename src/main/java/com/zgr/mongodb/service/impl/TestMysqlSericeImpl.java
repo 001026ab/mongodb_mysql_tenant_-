@@ -21,10 +21,17 @@ public class TestMysqlSericeImpl implements TestMysqlService {
 
     @Override
     public List<UserMysql> queryList() {
-        System.out.println("##############################################");
         List<UserMysql> userMysqls = testMysqlMapper.selectList(null);
-        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         System.out.println(userMysqls);
         return userMysqls;
+    }
+
+    @Override
+    public void save() {
+        UserMysql userMysql = new UserMysql();
+        userMysql.setUsername("ZZZ");
+        userMysql.setPassword("$%#%$#");
+        userMysql.setRole("RWE");
+        testMysqlMapper.insert(userMysql);
     }
 }

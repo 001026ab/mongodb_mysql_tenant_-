@@ -20,7 +20,7 @@ public class TestMysqlController {
     private TestMysqlService testMysqlService;
 
     @PostMapping("test")
-    @DataSource(DataSourceEnum.docker)
+   // @DataSource(DataSourceEnum.docker)
     public  void test2() {
         testMysqlService.queryList();
     }
@@ -30,5 +30,10 @@ public class TestMysqlController {
     public  void test3() {
         DataSourceContextHolder.setDataSource("tes_security_jwt");
         testMysqlService.queryList();
+    }
+    @PostMapping("test55")
+   @DataSource(DataSourceEnum.docker)
+    public  void test5() {
+        testMysqlService.save();
     }
 }
