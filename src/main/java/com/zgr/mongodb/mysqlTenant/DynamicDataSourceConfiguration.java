@@ -56,8 +56,7 @@ public class DynamicDataSourceConfiguration {
         //druidDataSource.setDbType("com.alibaba.druid.pool.DruidDataSource");
         druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         CLIENT_DB_FACTORY_MAP.put("docker", druidDataSource);
-        //配置默认数据源
-        dynamicDataSource.setDefaultTargetDataSource(druidDataSource);
+
         //第二个数据库
         DruidDataSource druidDataSource2 = new DruidDataSource();
 
@@ -74,8 +73,10 @@ public class DynamicDataSourceConfiguration {
 
         //配置多数据源
         CLIENT_DB_FACTORY_MAP.put("tes_security_jwt", druidDataSource2);
-
         dynamicDataSource.setTargetDataSources(CLIENT_DB_FACTORY_MAP);
+
+        //配置默认数据源,实际的应用中不应该在这里设置，而是应该在拦截器根据租户等区分数据库的信息进行初始数据源的设置
+        dynamicDataSource.setDefaultTargetDataSource(druidDataSource);
         //配置多数据源
       /*  HashMap<Object, Object> dataSourceMap = new HashMap();
         dataSourceMap.put(DataSourceEnum.PRIMARY.name(), primaryDataSource());

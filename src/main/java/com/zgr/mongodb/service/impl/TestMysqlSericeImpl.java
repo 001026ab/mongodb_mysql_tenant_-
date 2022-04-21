@@ -33,5 +33,10 @@ public class TestMysqlSericeImpl implements TestMysqlService {
         userMysql.setPassword("$%#%$#");
         userMysql.setRole("RWE");
         testMysqlMapper.insert(userMysql);
+        System.out.println("%%%%5:"+userMysql);
+        userMysql.setRole("测试新增后返回的主键与实体情况");
+        testMysqlMapper.updateById(userMysql);
+        System.out.println("%%%%$$$$$$:"+userMysql);
+
     }
 }
