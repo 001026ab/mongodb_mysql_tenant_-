@@ -1,4 +1,4 @@
-package com.zgr.mongodb.tenant;
+package com.zgr.mongodb.mongodbTenant;
 
 /**
  * ClassName: MongoContext
@@ -47,7 +47,6 @@ public class MongoContext {
         int port = mongoProperty.getPort();
         String username = mongoProperty.getUsername();
         String password = mongoProperty.getPassword();
-
      /*   System.out.println("*******************");
         System.out.println("*******************");
         System.out.println("*******************");

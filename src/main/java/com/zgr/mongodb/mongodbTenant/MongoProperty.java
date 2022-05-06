@@ -1,4 +1,4 @@
-package com.zgr.mongodb.tenant;
+package com.zgr.mongodb.mongodbTenant;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

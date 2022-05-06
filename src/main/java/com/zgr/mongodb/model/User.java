@@ -1,6 +1,10 @@
 package com.zgr.mongodb.model;
 
+import com.zgr.mongodb.annotation.InitTime;
+import com.zgr.mongodb.consat.TimeType;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -13,7 +17,8 @@ import java.util.Date;
 @Data
 public class User {
     private String userName;
-
+    @InitTime(value = TimeType.CREATE_TIME)
     private Date createTime;
+
 
 }

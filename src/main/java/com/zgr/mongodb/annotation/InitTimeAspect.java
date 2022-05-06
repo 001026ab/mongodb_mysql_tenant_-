@@ -17,6 +17,7 @@ import java.util.Date;
  * @date 2022/4/19 11:28
  */
 
+
 @Aspect
 @Component
 public class InitTimeAspect {
@@ -24,23 +25,23 @@ public class InitTimeAspect {
     public void initTime() {
     }
 
-    @Before("initTime()")
-    public void AfterInitTime(JoinPoint point) throws Exception {
+    @Before(value = "initTime()")
+    public void BeforeInitTime(JoinPoint point) throws Exception {
         Field[] declaredFields = point.getThis().getClass().getDeclaredFields();
         for (Field declaredField : declaredFields) {
             System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + declaredField);
             if (declaredField.isAnnotationPresent(InitTime.class)) {
                 InitTime annotation = declaredField.getAnnotation(InitTime.class);
-               // if (annotation.value()) {
-                    //为创建时间
-                    // 拿到该属性的getet方法
-                    Method m = this.getClass().getMethod("get" + getMethodName(declaredField.getName()));
-                    System.out.println("属性名称："+m);
-                    String invoke = (String) m.invoke(this);
-                    System.out.println("属性值："+invoke);
-             //   } else {
-                    //为更新时间
-              //  }
+                // if (annotation.value()) {
+                //为创建时间
+                // 拿到该属性的getet方法
+                Method m = this.getClass().getMethod("get" + getMethodName(declaredField.getName()));
+                System.out.println("属性名称：" + m);
+                String invoke = (String) m.invoke(this);
+                System.out.println("属性值：" + invoke);
+                //   } else {
+                //为更新时间
+                //  }
             }
         }
     }
@@ -48,6 +49,7 @@ public class InitTimeAspect {
     /**
      * 把一个字符串的第一个字母大写、效率是最高的
      */
+
     private String getMethodName(String fildeName) throws Exception {
         byte[] items = fildeName.getBytes();
         items[0] = (byte) ((char) items[0] - 'a' + 'A');

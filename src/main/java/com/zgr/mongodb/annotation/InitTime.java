@@ -1,11 +1,6 @@
 package com.zgr.mongodb.annotation;
 
-import com.zgr.mongodb.consat.TimeType;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * @author zgr
@@ -15,6 +10,9 @@ import java.lang.annotation.Target;
 //实体属性使用
 @Target({ElementType.FIELD})
 @Retention(value = RetentionPolicy.RUNTIME)
+//@Inherited //可以被子类继承
+@Documented
+
 public @interface InitTime {
-      String value() default TimeType.CREATE_TIME;
+      String value() ;
 }

@@ -1,4 +1,4 @@
-package com.zgr.mongodb.tenant;
+package com.zgr.mongodb.mongodbTenant;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
