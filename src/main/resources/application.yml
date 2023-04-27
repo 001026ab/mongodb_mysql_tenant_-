@@ -2,7 +2,7 @@ server:
   port: 8888
 #120.78.230.57
 mongo:
-  host: 192.168.126.133
+  host: 192.168.126.130
   port: 27017
   username: admin
   password: UFIRoot@Root123.comUFI

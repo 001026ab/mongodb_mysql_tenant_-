@@ -1,6 +1,9 @@
 package com.zgr.mongodb.mysqlTenant;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.baomidou.dynamic.datasource.provider.AbstractJdbcDataSourceProvider;
+import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +11,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +40,14 @@ public class DynamicDataSourceConfiguration {
     }*/
 
     private static final Map<Object, Object> CLIENT_DB_FACTORY_MAP = new HashMap<>();
+/*    @Value("${spring.datasource.dynamic.datasource.master.driver-class-name}")
+    private String driverName;
+    @Value("${spring.datasource.dynamic.datasource.master.url}")
+    private String url;
+    @Value("${spring.datasource.dynamic.datasource.master.username}")
+    private String username;
+    @Value("${spring.datasource.dynamic.datasource.master.password}")
+    private String password;*/
 
     @Bean("dynamicDataSource")
     @Primary
@@ -82,7 +96,24 @@ public class DynamicDataSourceConfiguration {
         dataSourceMap.put(DataSourceEnum.PRIMARY.name(), primaryDataSource());
         dataSourceMap.put(DataSourceEnum.DATASOURCE1.name(), dataSource1());
         dynamicDataSource.setTargetDataSources(dataSourceMap);*/
+        //连接数据查询数据库表中的其他租户的数据库连接
+       /* return new AbstractJdbcDataSourceProvider(driverName, url, username, password) {
+            @Override
+            protected Map<String, DataSourceProperty> executeStmt(Statement statement) throws SQLException {
+                Map<String, DataSourceProperty> dataSourceMap = new HashMap<>();
+                ResultSet resultSet = statement.executeQuery("select * from tenant");
+                while (resultSet.next()) {
+                    String tenant = resultSet.getString("tenant_id");
+                    DataSourceProperty sourceProperty = new DataSourceProperty();
+                    sourceProperty.setDriverClassName(resultSet.getString("data_source_driver"));
+                    sourceProperty.setUrl(resultSet.getString("data_source_url"));
+                    sourceProperty.setUsername(resultSet.getString("data_source_username"));
+                    sourceProperty.setPassword(resultSet.getString("data_source_password"));
+                    dataSourceMap.put(tenant, sourceProperty);
+                }
+                return dataSourceMap;
+            }
+        };*/
         return dynamicDataSource;
-
     }
 }
